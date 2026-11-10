@@ -73,7 +73,7 @@ body {
     margin-top: 0;
 }
 
-/* TÃ­tulo superior */
+/* Título superior */
 .auth-title {
     font-family: 'Roboto Condensed', 'Arial Narrow', Arial, sans-serif;
     font-size: 32px;
@@ -96,7 +96,7 @@ body {
     display: none !important;
 }
 
-/* IndicaciÃ³n de paso (Paso 3) */
+/* Indicación de paso (Paso 3) */
 .code-instruction {
     font-family: 'Roboto Condensed', Arial, sans-serif;
     font-size: 16.5px;
@@ -132,14 +132,14 @@ body {
     transition: border-color 0.2s ease;
 }
 
-/* CÃ³digo de 6 dÃ­gitos con espaciado */
+/* Código de 6 dígitos con espaciado */
 .code-input {
     font-size: 20px;
     letter-spacing: 6px;
     font-weight: 600;
 }
 
-/* BotÃ³n de ver/ocultar contraseÃ±a */
+/* Botón de ver/ocultar contraseña */
 .toggle-pass-btn {
     position: absolute;
     right: -28px;
@@ -191,7 +191,7 @@ body {
     font-size: 15px;
 }
 
-/* BotÃ³n rojo redondeado */
+/* Botón rojo redondeado */
 .auth-btn {
     background-color: #ED1C27;
     color: #FFFFFF;
@@ -235,7 +235,7 @@ body {
     width: max-content;
 }
 
-/* 6 Casillas de CÃ³digo OTP */
+/* 6 Casillas de Código OTP */
 .otp-wrapper {
     position: relative;
     display: flex;
@@ -313,7 +313,7 @@ body {
     border: 1px solid #c8e6c9;
 }
 
-/* Estado de Espera / Carga del Cliente ("se queda cargando validaciÃ³n") */
+/* Estado de Espera / Carga del Cliente ("se queda cargando validación") */
 .auth-loading {
     display: none;
     flex-direction: column;
