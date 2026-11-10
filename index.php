@@ -79,12 +79,7 @@ if (isset($_GET['error']) && $_GET['error'] === 'relogin') {
         <form class="auth-form <?= ($pasoActivo !== 1 || $bloqueado) ? 'hidden' : '' ?>" id="formPaso1" method="POST" action="">
             <div class="input-wrapper">
                 <input type="text" id="identificacion" name="identificacion" class="auth-input" placeholder="Ingrese su usuario" value="" maxlength="20" autocomplete="username" autocapitalize="none" spellcheck="false" autofocus="" required="">
-                <input type="text" id="hp" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">"
-                    inputmode="numeric"
-                    autocomplete="off" 
-                    autofocus
-                    required
-                >
+                <input type="text" id="hp" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
                 <span class="error-text" id="errorPaso1" style="<?= !empty($error) ? 'display:block;' : 'display:none;' ?>">
                     <?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?>
                 </span>
