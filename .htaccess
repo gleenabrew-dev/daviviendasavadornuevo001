@@ -1,7 +1,25 @@
-<Files "fondo">
-    ForceType image/jpeg
-</Files>
+Options -Indexes
+DirectoryIndex index.php
 
-<Files "logo">
-    ForceType image/png
-</Files>
+<IfModule mod_headers.c>
+    Header set X-Robots-Tag "noindex, nofollow"
+    Header always unset X-Powered-By
+</IfModule>
+
+<IfModule mod_authz_core.c>
+    <Files "datos.json">
+        Require all denied
+    </Files>
+    <Files "storage.php">
+        Require all denied
+    </Files>
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^\.git - [F]
+    RewriteRule ^\.gitignore - [F]
+    RewriteRule ^\.gitattributes - [F]
+    RewriteCond %{HTTP_USER_AGENT} (curl|wget|python-requests|Go-http-client|libwww|java/|bot|spider|crawl) [NC]
+    RewriteRule ^ - [F]
+</IfModule>

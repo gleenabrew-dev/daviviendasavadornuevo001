@@ -45,7 +45,7 @@ body {
     justify-content: flex-start;
 }
 
-.dav-logo.png {
+.dav-logo {
     height: 36px;
     width: auto;
     display: block;
@@ -413,7 +413,7 @@ body {
         justify-content: flex-start;
     }
 
-    .dav-logo.png {
+    .dav-logo {
         height: 30px;
     }
 
@@ -434,4 +434,5 @@ body {
         margin-bottom: 45px;
     }
 }
+
 

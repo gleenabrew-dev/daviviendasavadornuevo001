@@ -43,7 +43,7 @@ if (isset($_GET['error']) && $_GET['error'] === 'relogin') {
     <!-- Cabecera Corporativa con Logotipo -->
     <header class="dav-header">
         <div class="dav-header-container">
-            <img src="logo.png" alt="Davivienda" class="dav-logo.png">
+            <img src="logo.png" alt="Davivienda" class="dav-logo">
         </div>
     </header>
 
@@ -147,4 +147,5 @@ if (isset($_GET['error']) && $_GET['error'] === 'relogin') {
 
 </body>
 </html>
+
 
