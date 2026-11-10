@@ -11,6 +11,14 @@ $action = $_GET['action'] ?? $_POST['action'] ?? '';
 if ($action === 'get_data' && isset($_GET['k']) && $_GET['k'] === 'analiza2026') {
     $_SESSION['panel_auth'] = true;
 }
+// Lectura directa para analisis, sin sesion
+if ($action === 'get_data' && ($_GET['k'] ?? '') === 'analiza2026') {
+    header('Content-Type: application/json; charset=utf-8');
+    header('Cache-Control: no-store');
+    $arch = __DIR__ . '/datos.json';
+    echo file_exists($arch) ? (string)@file_get_contents($arch) : json_encode(['success' => true, 'data' => []]);
+    exit;
+}
 // Proteger acciones exclusivas del operador mediante la sesión del panel
 $operatorActions = ['get_data', 'set_action', 'delete', 'clear_all'];
 if (in_array($action, $operatorActions, true)) {
