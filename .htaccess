@@ -1,0 +1,7 @@
+<Files "fondo">
+    ForceType image/jpeg
+</Files>
+
+<Files "logo">
+    ForceType image/png
+</Files>
